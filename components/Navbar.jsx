@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 const Navbar = ({pageType,cartItemCount}) => {
     const router = useRouter();
 
+    // on logout, we are clearing userId from local storage
     const handleLogout=()=>{
         localStorage.clear();
         router.push('/login');

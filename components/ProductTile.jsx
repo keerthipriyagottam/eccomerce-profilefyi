@@ -5,7 +5,8 @@ import { updateCart } from '../utility/updateCart';
 
 const ProductTile = ({image,price,title,id,inCart,reloadHomePage}) => {
   const userId=localStorage.getItem('userId');
-  // const[incart,setIncart]=useState(false)
+
+  // Add to cart should add a single quantity of the product to cart.
   const handleAddToCart=async()=>{
     await updateCart(userId,id,1);
     reloadHomePage();

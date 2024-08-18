@@ -3,6 +3,7 @@ import Link from 'next/link';
 import './../styles/globals.css'
 import { useEffect } from 'react';
 
+// Component for initial instructions about the application.
 const Page = () => {
     const backendHealthCheck=async()=>{
         try {

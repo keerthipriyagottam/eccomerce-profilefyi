@@ -5,10 +5,13 @@ import ProductTile from "@/components/ProductTile"
 import { fetchCart } from "@/utility/fetchCart";
 import { useEffect, useState } from "react";
 
+// component for home page
 const page = () => {
   const[products,setProducts]=useState([]);
   const [cartItems,setCartItems] = useState([]);
   const [triggerReload, setTriggerReload] = useState(true);
+
+  // fetching all products using backend API
   const allProducts=async()=>{
     try {
       const response= await fetch(`https://ecommerce-profilefyi-backend.onrender.com/product/allProducts`,{
@@ -26,6 +29,7 @@ const page = () => {
     }
   }
 
+  // getting cart items so that we can send the item count to cart icon subscript
   const getCartItems=async()=>{
     const userId = localStorage.getItem('userId');
     const fetchedCartItems = await fetchCart(userId);
@@ -41,10 +45,12 @@ const page = () => {
     getCartItems();
   },[triggerReload]);
 
+  // checks if a product is already present in cart, based on product id (unique id of each product stored in DB).
   const isPresentInCart=(productId)=>{
     return cartItems.filter((item) => item.productId === productId).length > 0;
   }
 
+  // This can be used to trigger reload of the page so that we can update the cart count in icon
   const reloadHomePage=()=>{
     setTriggerReload(prevState => !prevState);
   }

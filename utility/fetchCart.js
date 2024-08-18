@@ -1,3 +1,5 @@
+// A utility function to fetch cart items
+
 export async function fetchCart(userId) {
     try {
         const response= await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/cartbyuserid/${userId}`)

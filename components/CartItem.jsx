@@ -2,10 +2,11 @@ import { updateCart } from "@/utility/updateCart"
 
 const CartItem = ({image,title,price,quantity,id,reloadCartPage}) => {
 
+  // Whenever there is a change in quantity of a cart item, we need to update cart.
   const handleChange=async(quantityToAdd)=>{
     const userId=localStorage.getItem('userId')
-    await updateCart(userId,id,quantityToAdd);
-    reloadCartPage();
+    await updateCart(userId,id,quantityToAdd); // Using utility function to update cart
+    reloadCartPage(); // This is so that cart page could be reloaded so that quantities, items and cart icon count could be updated
   }
   
   return (

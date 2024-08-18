@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import CartItem from '@/components/CartItem'
 import { useEffect, useState } from 'react'
 
+// component for cart page
 const page = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [triggerReload,setTriggerReload] = useState(true);
@@ -10,6 +11,7 @@ const page = () => {
   const [couponCode,setCouponCode]=useState('');
   const [afterDiscount,setAfterDiscount] = useState(0);
 
+  // fetching cart products
   const fetchCartProducts=async()=>{
     try {
       const userId=localStorage.getItem('userId');
@@ -25,6 +27,7 @@ const page = () => {
     }
   }
 
+  // calculating grand total as summation of cost of each item* quantity
   const calculateGrandTotal=()=> {
     let total = 0;
     cartProducts.forEach(product => {
@@ -33,6 +36,7 @@ const page = () => {
     setGrandTotal(total);
   }
 
+  // calculating the final amount after discount, currently supporting two coupon codes.
   const checkDiscount=()=>{
     if(!couponCode) {
       setAfterDiscount(grandTotal);
@@ -63,6 +67,7 @@ const page = () => {
     setTriggerReload(prevState => !prevState);
   }
 
+  // Just clearing off the cart upon place order. Not actually storing the order details anywhere.
   const handlePlaceOrder=async()=>{
     try {
       const userId=localStorage.getItem('userId');
