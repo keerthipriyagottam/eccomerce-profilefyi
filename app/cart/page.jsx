@@ -72,7 +72,7 @@ const page = () => {
     try {
       const userId=localStorage.getItem('userId');
       const response = await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/update/${userId}`,{
-        method:'GET',
+        method:'POST',
         headers:{'Content-Type': 'application/json'} ,
         body: JSON.stringify([])
       });
