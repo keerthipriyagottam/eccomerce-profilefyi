@@ -10,7 +10,7 @@ const page = () => {
   const [cartItems,setCartItems] = useState([]);
   const [triggerReload, setTriggerReload] = useState(true);
   const allProducts=async()=>{
-      const response= await fetch('http://localhost:8080/product/allProducts',{
+      const response= await fetch(`https://ecommerce-profilefyi-backend.onrender.com/product/allProducts`,{
         method:'GET',
         headers:{'Content-Type': 'application/json'}
       })

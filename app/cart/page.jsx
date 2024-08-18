@@ -12,7 +12,7 @@ const page = () => {
 
   const fetchCartProducts=async()=>{
     const userId=localStorage.getItem('userId');
-    const response = await fetch(`http://localhost:8080/cart/cartProducts/${userId}`);
+    const response = await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/cartProducts/${userId}`);
     if(response.ok) {
       const result = await response.json();
       setCartProducts(result);
@@ -59,7 +59,7 @@ const page = () => {
 
   const handlePlaceOrder=async()=>{
     const userId=localStorage.getItem('userId');
-    await fetch(`http://localhost:8080/cart/update/${userId}`,{
+    await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/update/${userId}`,{
       method:'POST',
       headers:{'Content-Type': 'application/json'} ,
       body: JSON.stringify({items: []})

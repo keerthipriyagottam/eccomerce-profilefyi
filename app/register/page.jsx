@@ -19,7 +19,7 @@ const page = () => {
     }
 
     try {
-        const endpoint = 'http://localhost:8080/user/register';
+        const endpoint = `https://ecommerce-profilefyi-backend.onrender.com/user/register`;
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {

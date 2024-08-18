@@ -20,9 +20,9 @@ export async function updateCart(userId,id,quantityToAdd){
       updatedCartContent.push({productId: id, quantity: quantityToAdd});
     }
 
-    const response= await fetch(`http://localhost:8080/cart/update/${userId}`,{
+    const response= await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/update/${userId}`,{
         method:'POST',
         headers:{'Content-Type': 'application/json'} ,
-        body: JSON.stringify({items: updatedCartContent})
+        body: JSON.stringify(updatedCartContent)
     });
 }

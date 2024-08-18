@@ -18,7 +18,7 @@ const page = () => {
     }
 
     try {
-        const endpoint = 'http://localhost:8080/user/login';
+        const endpoint = `https://ecommerce-profilefyi-backend.onrender.com/user/login`;
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
