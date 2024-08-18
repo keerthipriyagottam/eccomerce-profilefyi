@@ -74,7 +74,7 @@ const page = () => {
       const response = await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/update/${userId}`,{
         method:'GET',
         headers:{'Content-Type': 'application/json'} ,
-        body: JSON.stringify({items: []})
+        body: JSON.stringify([])
       });
       if (!response.ok) {
         throw new Error(`Network response was not ok`);
