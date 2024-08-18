@@ -10,12 +10,20 @@ const page = () => {
   const [cartItems,setCartItems] = useState([]);
   const [triggerReload, setTriggerReload] = useState(true);
   const allProducts=async()=>{
+    try {
       const response= await fetch(`https://ecommerce-profilefyi-backend.onrender.com/product/allProducts`,{
         method:'GET',
         headers:{'Content-Type': 'application/json'}
       })
-      const result=await response.json();
-      setProducts(result);
+      if(response.ok) {
+        const result=await response.json();
+        setProducts(result);
+      } else {
+        throw new Error('Network response was not ok')
+      }
+    } catch {
+      alert('Error fetching products. Please try again later')
+    }
   }
 
   const getCartItems=async()=>{

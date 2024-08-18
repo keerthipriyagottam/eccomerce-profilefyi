@@ -11,11 +11,17 @@ const page = () => {
   const [afterDiscount,setAfterDiscount] = useState(0);
 
   const fetchCartProducts=async()=>{
-    const userId=localStorage.getItem('userId');
-    const response = await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/cartProducts/${userId}`);
-    if(response.ok) {
-      const result = await response.json();
-      setCartProducts(result);
+    try {
+      const userId=localStorage.getItem('userId');
+      const response = await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/cartProducts/${userId}`);
+      if(response.ok) {
+        const result = await response.json();
+        setCartProducts(result);
+      } else {
+        throw new Error(`Network response was not ok`);
+      }
+    } catch {
+      alert('Error fetching cart items. Please try again later.')
     }
   }
 
@@ -58,13 +64,20 @@ const page = () => {
   }
 
   const handlePlaceOrder=async()=>{
-    const userId=localStorage.getItem('userId');
-    await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/update/${userId}`,{
-      method:'POST',
-      headers:{'Content-Type': 'application/json'} ,
-      body: JSON.stringify({items: []})
-    });
-    reloadCartPage();
+    try {
+      const userId=localStorage.getItem('userId');
+      const response = await fetch(`https://ecommerce-profilefyi-backend.onrender.com/cart/update/${userId}`,{
+        method:'GET',
+        headers:{'Content-Type': 'application/json'} ,
+        body: JSON.stringify({items: []})
+      });
+      if (!response.ok) {
+        throw new Error(`Network response was not ok`);
+      }
+      reloadCartPage();
+    } catch {
+      alert('There was an issue placing your order. Please try again later.');
+    }
   }
   
   return (

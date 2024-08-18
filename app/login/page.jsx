@@ -34,18 +34,20 @@ const page = () => {
             setEmail('');
             setPassword('');
             router.push('/home');
+        } else if(response.status === 400) {
+          alert('Invalid credentials');
         } else {
-          console.error('Error: ' + result.message);
+          throw new Error('Network response was not ok')
         }
     } catch (error) {
-        console.error('Error:', error);
+        alert('Error occured while trying to login');
     }
   };
 
   return (
     <div className='flex flex-col h-screen'>
       <Navbar pageType='login'/>
-      <div className='bg-stone-100 rounded-md center p-8 w-96 mx-auto my-auto justify-self-center'>
+      <div className='bg-stone-100 shadow-xl rounded-md center p-8 w-96 mx-auto my-auto justify-self-center'>
         <form onSubmit={handleSubmit}className='flex flex-col'>
           <div className="flex flex-col mb-4">
             <label htmlFor="email" className='text-gray-700 font-semibold'>Email</label>

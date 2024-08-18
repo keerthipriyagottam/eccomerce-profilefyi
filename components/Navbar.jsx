@@ -39,13 +39,13 @@ const Navbar = ({pageType,cartItemCount}) => {
                 
             {pageType==='register' &&
                 <Link href="/login">
-                    <button className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600'>Login</button>
+                    <button className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600'>Go to Login</button>
                 </Link>
             }
             
             {pageType==='login' &&
                 <Link href="/register">
-                    <button className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600'>Sign up</button>
+                    <button className='bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600'>Go to Sign up</button>
                 </Link>
             }
         </div>

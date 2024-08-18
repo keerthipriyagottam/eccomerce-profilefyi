@@ -36,10 +36,10 @@ const page = () => {
           setPassword('');
           router.push('/login');
         } else {
-          console.error('Error: ' + result.message);
+          throw new Error('Error: ' + result.message);
         }
     } catch (error) {
-        console.error('Error:', error);
+        alert('Error occured while trying to register');
     }
   };
   return (
